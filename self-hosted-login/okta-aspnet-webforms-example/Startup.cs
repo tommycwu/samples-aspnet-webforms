@@ -31,7 +31,7 @@ namespace okta_aspnet_webforms_example
                 ClientSecret = ConfigurationManager.AppSettings["okta:ClientSecret"],
                 RedirectUri = ConfigurationManager.AppSettings["okta:RedirectUri"],
                 PostLogoutRedirectUri = ConfigurationManager.AppSettings["okta:PostLogoutRedirectUri"],
-                Scope = new List<string> { "openid", "profile", "email" },
+                Scope = new List<string> { "manage:lists", "openid", "profile", "email" },
                 LoginMode = LoginMode.SelfHosted,
             });
         }

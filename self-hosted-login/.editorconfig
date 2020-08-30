@@ -1,0 +1,10 @@
+﻿[*.cs]
+
+# SA1108: Block statements should not contain embedded comments
+dotnet_diagnostic.SA1108.severity = silent
+
+# SA1005: Single line comments should begin with single space
+dotnet_diagnostic.SA1005.severity = silent
+
+# SA1401: Fields should be private
+dotnet_diagnostic.SA1401.severity = silent
