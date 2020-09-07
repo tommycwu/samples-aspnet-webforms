@@ -30,16 +30,16 @@ namespace okta_aspnet_webforms_example
                 });
 
                 Random rngFirst = new Random();
-                rngFirst.Next(1, 10);
+                var intFirst = rngFirst.Next(1, 10);
                 Random rngLast = new Random();
-                rngLast.Next(1, 10);
+                var intlast = rngLast.Next(1, 10);
 
-                var vader = await client.Users.CreateUserAsync(new CreateUserWithPasswordOptions
+                _ = await client.Users.CreateUserAsync(new CreateUserWithPasswordOptions
                 {
                   Profile = new UserProfile
                     {
-                        FirstName = "FirstName" + rngFirst.ToString(), //pull user profile info from db to use here
-                        LastName = "LastName" + rngLast.ToString(), //pull user profile info from db to use here
+                        FirstName = "FirstName" + intFirst.ToString(), //pull user profile info from db to use here
+                        LastName = "LastName" + intlast.ToString(), //pull user profile info from db to use here
                         Email = TextBox1.Text,
                         Login = TextBox1.Text,
                     },

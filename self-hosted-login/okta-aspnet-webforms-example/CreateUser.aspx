@@ -1,10 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm8.aspx.cs" Inherits="okta_aspnet_webforms_example.WebForm8" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CreateUser.aspx.cs" Inherits="okta_aspnet_webforms_example.WebForm8" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title></title>    
+    <link rel="stylesheet" type="text/css" href="gridview.css" />
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css" />
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -55,9 +57,15 @@
                     </td>
                 </tr>
                 <tr>
+                    <td class="auto-style2">
+                        &nbsp;</td>
+                    <td>
+                        &nbsp;</td>
+                </tr>
+                <tr>
                     <td class="auto-style2">&nbsp;</td>
                     <td>
-                        <asp:Button ID="Button1" runat="server" Text="Create User" />
+                        <asp:Button ID="Button1" runat="server" Text="Create User" OnClick="Button1_Click" />
                     </td>
                 </tr>
             </table>

@@ -53,8 +53,8 @@
     <Reference Include="FlexibleConfiguration, Version=1.2.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FlexibleConfiguration.1.2.2\lib\net45\FlexibleConfiguration.dll</HintPath>
     </Reference>
-    <Reference Include="IdentityModel, Version=3.10.10.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
-      <HintPath>..\packages\IdentityModel.3.10.10\lib\net452\IdentityModel.dll</HintPath>
+    <Reference Include="IdentityModel, Version=4.3.1.0, Culture=neutral, PublicKeyToken=e7877f4675df049f, processorArchitecture=MSIL">
+      <HintPath>..\packages\IdentityModel.4.3.1\lib\net472\IdentityModel.dll</HintPath>
     </Reference>
     <Reference Include="Kentor.OwinCookieSaver, Version=1.1.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Kentor.OwinCookieSaver.1.1.1\lib\net452\Kentor.OwinCookieSaver.dll</HintPath>
@@ -284,6 +284,7 @@
     <Content Include="background2.css" />
     <Content Include="background2.png" />
     <Content Include="background3.css" />
+    <Content Include="background4.css" />
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -306,11 +307,15 @@
     <Content Include="gridview.css" />
     <Content Include="Icon.png" />
     <Content Include="Img\19-20 season pass.png" />
+    <Content Include="Img\agent.png" />
+    <Content Include="Img\agent_background.png" />
+    <Content Include="Img\alterra.png" />
     <Content Include="Img\background.png" />
     <Content Include="Img\background2.png" />
+    <Content Include="Img\ecommerce.png" />
     <Content Include="Img\ikon.png" />
-    <Content Include="Img\legacy.png" />
     <Content Include="Img\login.png" />
+    <Content Include="Img\menu.png" />
     <Content Include="Img\search.png" />
     <Content Include="Img\usd.png" />
     <Content Include="LoginOld.aspx" />
@@ -332,14 +337,15 @@
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </Content>
-    <Content Include="WebForm7.aspx" />
-    <Content Include="WebForm8.aspx" />
+    <Content Include="UpdateUser.aspx" />
+    <Content Include="CreateUser.aspx" />
+    <Content Include="usertokens.aspx" />
     <Content Include="Welcome.aspx" />
     <Content Include="AgentSignin.aspx" />
     <Content Include="Login.aspx" />
-    <Content Include="WebForm4.aspx" />
-    <Content Include="WebForm5.aspx" />
-    <Content Include="WebForm6.aspx" />
+    <Content Include="agenttokens.aspx" />
+    <Content Include="IkonPass.aspx" />
+    <Content Include="shoppertokens.aspx" />
     <Content Include="Content\okta-theme.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="README.md" />
@@ -457,19 +463,26 @@
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm7.aspx.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
+    <Compile Include="UpdateUser.aspx.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm7.aspx.designer.cs">
-      <DependentUpon>WebForm7.aspx</DependentUpon>
+    <Compile Include="UpdateUser.aspx.designer.cs">
+      <DependentUpon>UpdateUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm8.aspx.cs">
-      <DependentUpon>WebForm8.aspx</DependentUpon>
+    <Compile Include="CreateUser.aspx.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm8.aspx.designer.cs">
-      <DependentUpon>WebForm8.aspx</DependentUpon>
+    <Compile Include="CreateUser.aspx.designer.cs">
+      <DependentUpon>CreateUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="usertokens.aspx.cs">
+      <DependentUpon>usertokens.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="usertokens.aspx.designer.cs">
+      <DependentUpon>usertokens.aspx</DependentUpon>
     </Compile>
     <Compile Include="Welcome.aspx.cs">
       <DependentUpon>Welcome.aspx</DependentUpon>
@@ -492,26 +505,26 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm4.aspx.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
+    <Compile Include="agenttokens.aspx.cs">
+      <DependentUpon>agenttokens.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm4.aspx.designer.cs">
-      <DependentUpon>WebForm4.aspx</DependentUpon>
+    <Compile Include="agenttokens.aspx.designer.cs">
+      <DependentUpon>agenttokens.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm5.aspx.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
+    <Compile Include="IkonPass.aspx.cs">
+      <DependentUpon>IkonPass.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm5.aspx.designer.cs">
-      <DependentUpon>WebForm5.aspx</DependentUpon>
+    <Compile Include="IkonPass.aspx.designer.cs">
+      <DependentUpon>IkonPass.aspx</DependentUpon>
     </Compile>
-    <Compile Include="WebForm6.aspx.cs">
-      <DependentUpon>WebForm6.aspx</DependentUpon>
+    <Compile Include="shoppertokens.aspx.cs">
+      <DependentUpon>shoppertokens.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="WebForm6.aspx.designer.cs">
-      <DependentUpon>WebForm6.aspx</DependentUpon>
+    <Compile Include="shoppertokens.aspx.designer.cs">
+      <DependentUpon>shoppertokens.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

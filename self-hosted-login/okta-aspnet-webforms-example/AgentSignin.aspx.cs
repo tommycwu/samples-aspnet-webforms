@@ -17,7 +17,7 @@ namespace okta_aspnet_webforms_example
         {
             if (Request.IsAuthenticated)
             {
-                Response.Redirect("/Profile.aspx");
+                Response.Redirect("/agenttokens.aspx");
             }
 
             if (Request.RequestType == "POST" && !Request.IsAuthenticated)
@@ -25,12 +25,17 @@ namespace okta_aspnet_webforms_example
                 var sessionToken = Request.Form["sessionToken"]?.ToString();
                 var properties = new AuthenticationProperties();
                 properties.Dictionary.Add("sessionToken", sessionToken);
-                properties.RedirectUri = "/Profile.aspx";
+                properties.RedirectUri = "/agenttokens.aspx";
 
                 HttpContext.Current.GetOwinContext().Authentication.Challenge(
                         properties,
                         OpenIdConnectAuthenticationDefaults.AuthenticationType);
             }
+        }
+
+        protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
+        {
+            Response.Redirect("Welcome.aspx");
         }
     }
 }

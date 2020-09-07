@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
+using Microsoft.Owin.Security;
+using Microsoft.Owin.Security.OpenIdConnect;
 
 #pragma warning disable SA1300 // Element should begin with upper-case letter
 namespace okta_aspnet_webforms_example
@@ -13,17 +12,47 @@ namespace okta_aspnet_webforms_example
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
         }
 
         protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
         {
+            ImageButton12.Visible = false;
             Response.Redirect("Login.aspx");
         }
 
         protected void ImageButton4_Click(object sender, ImageClickEventArgs e)
         {
-            Response.Redirect("Webform5.aspx");
+            if (ImageButton12.Visible)
+            {
+                ImageButton12.Visible = false;
+            }
+            else
+            {
+                ImageButton12.Visible = true;
+            }
+        }
+
+        protected void ImageButton2_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton12.Visible = false;
+            if (!Request.IsAuthenticated)
+            {
+                HttpContext.Current.GetOwinContext().Authentication.Challenge(
+                  new AuthenticationProperties { RedirectUri = "/shoppertokens.aspx" },
+                  OpenIdConnectAuthenticationDefaults.AuthenticationType);
+            }
+        }
+
+        protected void ImageButton5_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton12.Visible = false;
+            Response.Redirect("IkonPass.aspx");
+        }
+
+        protected void ImageButton12_Click(object sender, ImageClickEventArgs e)
+        {
+            ImageButton12.Visible = false;
+            Response.Redirect("AgentSignin.aspx");
         }
     }
 }

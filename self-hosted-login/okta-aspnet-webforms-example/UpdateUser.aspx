@@ -1,10 +1,11 @@
-﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="WebForm7.aspx.cs" Inherits="okta_aspnet_webforms_example.WebForm7" %>
+﻿<%@ Page Async="true" Language="C#" AutoEventWireup="true" CodeBehind="UpdateUser.aspx.cs" Inherits="okta_aspnet_webforms_example.WebForm7" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css" />
     <style type="text/css">
         .auto-style1 {
             width: 100%;
@@ -26,6 +27,12 @@
                 <td>
                     <asp:Button ID="Button1" runat="server" Text="Lookup" OnClick="Button1_Click" />
                 </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style2">
@@ -56,12 +63,25 @@
                     <asp:Label ID="Label4" runat="server" Text="Update Password:"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="TextBox5" runat="server" TextMode="Password"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Update" />
+                </td>
+                <td>
+                    <asp:Label ID="Label5" runat="server"></asp:Label>
                 </td>
             </tr>
         </table>
         <br />
-        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Update" />
         </div>
     </form>
 </body>

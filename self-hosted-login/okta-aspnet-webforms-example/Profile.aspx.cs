@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Owin.Security.Cookies;
+using System;
 using System.Linq;
 using System.Web;
 using System.Web.UI.WebControls;
@@ -31,6 +32,15 @@ namespace okta_aspnet_webforms_example
             foreach (GridViewRow row in GridViewClaims.Rows)
             {
                 row.Cells[1].Attributes.Add("id", $"claim-{row.Cells[0].Text}");
+            }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                HttpContext.Current.GetOwinContext().Authentication.SignOut(
+                    CookieAuthenticationDefaults.AuthenticationType);
             }
         }
     }
