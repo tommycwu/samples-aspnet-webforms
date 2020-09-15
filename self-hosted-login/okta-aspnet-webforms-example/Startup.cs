@@ -26,12 +26,12 @@ namespace okta_aspnet_webforms_example
 
             app.UseOktaMvc(new OktaMvcOptions()
             {
-                OktaDomain = ConfigurationManager.AppSettings["okta:OktaDomain"],
-                ClientId = ConfigurationManager.AppSettings["okta:ClientId"],
-                ClientSecret = ConfigurationManager.AppSettings["okta:ClientSecret"],
-                RedirectUri = ConfigurationManager.AppSettings["okta:RedirectUri"],
-                PostLogoutRedirectUri = ConfigurationManager.AppSettings["okta:PostLogoutRedirectUri"],
-                Scope = new List<string> { "alterra.admin", "openid", "profile", "email" },
+                OktaDomain = ConfigurationManager.AppSettings["auth:OktaDomain"],
+                ClientId = ConfigurationManager.AppSettings["auth:ClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["auth:ClientSecret"],
+                RedirectUri = ConfigurationManager.AppSettings["auth:RedirectUri"],
+                PostLogoutRedirectUri = ConfigurationManager.AppSettings["auth:PostLogoutRedirectUri"],
+                Scope = new List<string> { "openid", "profile" },
                 LoginMode = LoginMode.SelfHosted,
             });
         }

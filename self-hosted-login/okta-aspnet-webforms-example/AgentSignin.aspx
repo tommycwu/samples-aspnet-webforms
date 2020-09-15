@@ -11,19 +11,15 @@
 </head>
 <body>
 <form id="form2" runat="server">
-<div><asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Img/alterra.png" OnClick="ImageButton1_Click" /></div>
-<div id="okta-login-container" style="float: left; margin-left: 100px" ></div>
+<div></div>
+<div id="okta-login-container" style="float: left; margin-left: 30px; margin-top: 200px" ></div>
     <input type="hidden" name="sessionToken" id="hiddenSessionTokenField" />
         <div>
         </div>
     <script type="text/javascript">
-        var oktaDomain = '<%= System.Configuration.ConfigurationManager.AppSettings["okta:oktaDomain"].ToString() %>';
-        var agentIssuer = '<%= System.Configuration.ConfigurationManager.AppSettings["alterra:Issuer"].ToString() %>';
-        var cId = '<%= System.Configuration.ConfigurationManager.AppSettings["alterra:ClientId"].ToString() %>';
-        var redirUri = '<%= System.Configuration.ConfigurationManager.AppSettings["okta:RedirectUri"].ToString() %>';
 
         var signIn = new OktaSignIn({
-            baseUrl: oktaDomain            
+            baseUrl: '<%= System.Configuration.ConfigurationManager.AppSettings["auth:oktaDomain"].ToString() %>'
         });
 
         signIn.renderEl({ el: '#okta-login-container' }, (res) => {
@@ -34,23 +30,6 @@
         }, (err) => {
             console.error(err);
         });
-
-        ////var signIn = new OktaSignIn({
-        ////    baseUrl: oktaDomain,
-        ////    el: '#okta-login-container',
-        ////    authParams: {
-        ////        issuer: agentIssuer
-        ////    }
-        ////});
-
-        ////signIn.showSignInToGetTokens({
-        ////    clientId: cId,
-
-        ////    redirectUri: redirUri,
-        ////    getAccessToken: true,
-        ////    getIdToken: true,
-        ////    scope: 'openid profile'
-        ////});
 
     </script>
     </form>

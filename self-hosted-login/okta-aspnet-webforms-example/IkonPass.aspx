@@ -12,20 +12,32 @@
     <form id="form1" runat="server">
         <br />
         <div>
-            &nbsp;<a href="Welcome.aspx">Home</a>
+            <a href="agentsignin.aspx">Home</a>
         </div>
         <br />
-        <div class="text-center"><asp:Label ID="Label1" runat="server" Font-Size="Larger" Text="Scan your Ikon Pass to see how many days remain."></asp:Label></div>
+        <div class="text-center"></div>
         <br />
+        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Img/logo_GetMyHealthData2.png" OnClick="ImageButton1_ClickAsync" CssClass="center-block" BorderWidth="5px" Enabled="False" />
+        <div class="text-center">
         <br />
-        <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/Img/19-20 season pass.png" OnClick="ImageButton1_ClickAsync" CssClass="center-block" />
+            <asp:Label ID="Label1" runat="server" Font-Size="Larger" Text="Click on the button above to get your health data."></asp:Label>
         <br />
+        </div>
+
         <br />
+        <div>
+            <asp:Label ID="Label4" runat="server" Text="Id Token" Visible="False"></asp:Label>
+        </div>
+        <div>
+            <div><asp:GridView runat="server" ID="GridViewID" OnRowDataBound="GridViewID_OnRowDataBound" CssClass="mGrid"></asp:GridView></div>
+        </div>
+        <br />
+
         <div>
             <asp:Label ID="Label3" runat="server" Text="Access Token" Visible="False"></asp:Label>
         </div>
         <div>
-            <asp:GridView runat="server" ID="GridViewAccess" CssClass="mGrid"></asp:GridView>
+            <div><asp:GridView runat="server" ID="GridViewAccess" CssClass="mGrid" OnRowDataBound="GridViewAccess_RowDataBound"></asp:GridView></div>
         </div>
     </form>
 </body>
