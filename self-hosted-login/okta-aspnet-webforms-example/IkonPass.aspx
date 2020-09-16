@@ -12,7 +12,9 @@
     <form id="form1" runat="server">
         <br />
         <div>
-            <a href="agentsignin.aspx">Home</a>
+
+            <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click">Logout</asp:LinkButton>
+
         </div>
         <br />
         <div class="text-center"></div>

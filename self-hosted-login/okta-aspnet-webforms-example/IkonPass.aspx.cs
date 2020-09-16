@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Microsoft.Owin.Security.Cookies;
 using Newtonsoft.Json;
 
 #pragma warning disable SA1300 // Element should begin with upper-case letter
@@ -20,6 +21,8 @@ namespace okta_aspnet_webforms_example
     public partial class WebForm5 : System.Web.UI.Page
     {
         private string ssnValue;
+        private string atokenStr;
+        private string itokenStr;
 
         public class OktaToken
         {
@@ -111,8 +114,8 @@ namespace okta_aspnet_webforms_example
             {
                 ImageButton1.Enabled = true;
 
-                string itokenStr = string.Empty;
-                string atokenStr = string.Empty;
+                itokenStr = string.Empty;
+                atokenStr = string.Empty;
 
                 //extract the id token and access token from the claims sent back from the sign-in widget
                 var claimsList = HttpContext.Current.GetOwinContext().Authentication.User.Claims.ToList();
@@ -176,38 +179,38 @@ namespace okta_aspnet_webforms_example
 
         protected async void ImageButton1_ClickAsync(object sender, ImageClickEventArgs e)
         {
-            var token = await GetTokenForAPI();
-            if (token != null)
+            //var token = await GetTokenForAPI();
+            //if (token != null)
+            //{
+            //var atoken = token.AccessToken;
+
+            var atoken = atokenStr;
+            if (atoken.Length > 1)
             {
-                var atoken = token.AccessToken;
+                //var handler = new JwtSecurityTokenHandler();
+                //var jsonToken = handler.ReadToken(atoken);
+                //var tokenS = handler.ReadToken(atoken) as JwtSecurityToken;
 
-                if (atoken.Length > 1)
-                {
-                    var handler = new JwtSecurityTokenHandler();
-                    var jsonToken = handler.ReadToken(atoken);
-                    var tokenS = handler.ReadToken(atoken) as JwtSecurityToken;
+                //GridViewAccess.DataSource = tokenS.Claims.Select(x => new { Name = x.Type, Value = x.Value });
+                //GridViewAccess.DataBind();
+                //Label3.Visible = true;
+                //Label4.Visible = true;
 
-                    GridViewAccess.DataSource = tokenS.Claims.Select(x => new { Name = x.Type, Value = x.Value });
-                    GridViewAccess.DataBind();
-                    Label3.Visible = true;
-                    Label4.Visible = true;
-
-                    var returnedData = "No Data Found";
-                    returnedData = await GetDataFromAPI(atoken, ssnValue);
-                    Label1.Text = returnedData;
-                }
-                else
-                {
-                    Label1.Text = "You do not have rights to retrieve data.";
-                }
-
+                var returnedData = "No Data Found";
+                returnedData = await GetDataFromAPI(atoken, ssnValue);
+                Label1.Text = returnedData;
             }
             else
             {
-                Label1.Text = "Error retrieving data.";
+                Label1.Text = "You do not have rights to retrieve data.";
             }
-        }
 
+            //}
+            //else
+            //{
+            //    Label1.Text = "Error retrieving data.";
+            //}
+        }
 
         protected void GridViewAccess_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -223,6 +226,17 @@ namespace okta_aspnet_webforms_example
             {
                 row.Cells[1].Attributes.Add("id", $"claim-{row.Cells[0].Text}");
             }
+        }
+
+        protected void LinkButton1_Click(object sender, EventArgs e)
+        {
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                HttpContext.Current.GetOwinContext().Authentication.SignOut(
+                    CookieAuthenticationDefaults.AuthenticationType);
+            }
+
+            Response.Redirect("AgentSignin.aspx");
         }
     }
 }
