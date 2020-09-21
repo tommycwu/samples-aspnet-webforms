@@ -15,19 +15,19 @@
     var signIn = new OktaSignIn({
         baseUrl: '<%= System.Configuration.ConfigurationManager.AppSettings["okta:oktaDomain"].ToString() %>',
         customButtons: [{
-                title: 'Sign in with Facebook',
-                className: 'social-auth-button social-auth-facebook-button link-button',
-                click: function() {
-                    window.location.href = 'http://localhost:8080/Login.aspx?idp=<%= System.Configuration.ConfigurationManager.AppSettings["okta:FacebookIdp"].ToString() %>';
-                }
-            },
-            {
-                title: 'Sign in with Google',
-                className: 'social-auth-button social-auth-google-button link-button',
-                click: function() {
-                    window.location.href = 'http://localhost:8080/Login.aspx?idp=<%= System.Configuration.ConfigurationManager.AppSettings["okta:GoogleIdp"].ToString() %>';
-                }
-            }]
+            title: 'Sign in with Facebook',
+            className: 'social-auth-button social-auth-facebook-button link-button',
+            click: function() {
+                window.location.href = 'http://localhost:8080/Login.aspx?idp=<%= System.Configuration.ConfigurationManager.AppSettings["okta:FacebookIdp"].ToString() %>';
+            }
+        },
+        {
+            title: 'Sign in with Google',
+            className: 'social-auth-button social-auth-google-button link-button',
+            click: function() {
+                window.location.href = 'http://localhost:8080/Login.aspx?idp=<%= System.Configuration.ConfigurationManager.AppSettings["okta:GoogleIdp"].ToString() %>';
+            }
+        }]
     });
 
     signIn.renderEl({ el: '#widget' }, (res) => {

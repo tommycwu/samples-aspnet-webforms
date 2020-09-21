@@ -48,38 +48,38 @@ namespace okta_aspnet_webforms_example
             }
         }
 
-        private async Task<OktaToken> GetTokenForAPI()
-        {
-            string retJson = string.Empty;
-            var token = new OktaToken();
-            var client = new HttpClient();
-            var client_id = ConfigurationManager.AppSettings["api:ClientId"].ToString();
-            var client_secret = ConfigurationManager.AppSettings["api:ClientSecret"].ToString();
-            var clientCreds = System.Text.Encoding.UTF8.GetBytes($"{client_id}:{client_secret}");
-            client.DefaultRequestHeaders.Authorization =
-                new AuthenticationHeaderValue("Basic", System.Convert.ToBase64String(clientCreds));
-            var token_url = ConfigurationManager.AppSettings["api:Issuer"].ToString() + "/v1/token";
-            var postMessage = new Dictionary<string, string>();
-            postMessage.Add("grant_type", "client_credentials");
-            postMessage.Add("scope", "daysleft");
-            var request = new HttpRequestMessage(HttpMethod.Post, token_url)
-            {
-                Content = new FormUrlEncodedContent(postMessage),
-            };
-            var response = await client.SendAsync(request);
-            if (response.IsSuccessStatusCode)
-            {
-                var json = await response.Content.ReadAsStringAsync();
-                token = JsonConvert.DeserializeObject<OktaToken>(json);
-                token.ExpiresAt = DateTime.UtcNow.AddSeconds(token.ExpiresIn);
-            }
-            else
-            {
-                return null;
-            }
+        //private async Task<OktaToken> GetTokenForAPI()
+        //{
+        //    string retJson = string.Empty;
+        //    var token = new OktaToken();
+        //    var client = new HttpClient();
+        //    var client_id = ConfigurationManager.AppSettings["api:ClientId"].ToString();
+        //    var client_secret = ConfigurationManager.AppSettings["api:ClientSecret"].ToString();
+        //    var clientCreds = System.Text.Encoding.UTF8.GetBytes($"{client_id}:{client_secret}");
+        //    client.DefaultRequestHeaders.Authorization =
+        //        new AuthenticationHeaderValue("Basic", System.Convert.ToBase64String(clientCreds));
+        //    var token_url = ConfigurationManager.AppSettings["api:Issuer"].ToString() + "/v1/token";
+        //    var postMessage = new Dictionary<string, string>();
+        //    postMessage.Add("grant_type", "client_credentials");
+        //    postMessage.Add("scope", "daysleft");
+        //    var request = new HttpRequestMessage(HttpMethod.Post, token_url)
+        //    {
+        //        Content = new FormUrlEncodedContent(postMessage),
+        //    };
+        //    var response = await client.SendAsync(request);
+        //    if (response.IsSuccessStatusCode)
+        //    {
+        //        var json = await response.Content.ReadAsStringAsync();
+        //        token = JsonConvert.DeserializeObject<OktaToken>(json);
+        //        token.ExpiresAt = DateTime.UtcNow.AddSeconds(token.ExpiresIn);
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
 
-            return token;
-        }
+        //    return token;
+        //}
 
         private async Task<string> GetDataFromAPI(string atoken, string rfid)
         {

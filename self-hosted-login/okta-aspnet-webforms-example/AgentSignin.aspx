@@ -17,9 +17,15 @@
         <div>
         </div>
     <script type="text/javascript">
-
         var signIn = new OktaSignIn({
-            baseUrl: '<%= System.Configuration.ConfigurationManager.AppSettings["auth:oktaDomain"].ToString() %>'
+            baseUrl: '<%= System.Configuration.ConfigurationManager.AppSettings["auth:oktaDomain"].ToString() %>',
+            customButtons: [{
+                title: 'Sign in with Google',
+                className: 'social-auth-button social-auth-google-button link-button',
+                click: function () {
+                    window.location.href = 'https://twu.oktapreview.com/oauth2/v1/authorize?idp=0oau0jrldpmnd6z2s0h7&client_id=0oatxinjpsnnXRTia0h7&response_type=id_token&response_mode=fragment&scope=openid%20email&redirect_uri=http%3A%2F%2Flocalhost%3A8080%2Fauthorize%2Fcallback&state=state&nonce=nonce';
+                }
+            }]
         });
 
         signIn.renderEl({ el: '#okta-login-container' }, (res) => {
@@ -30,7 +36,6 @@
         }, (err) => {
             console.error(err);
         });
-
     </script>
     </form>
 </body>
